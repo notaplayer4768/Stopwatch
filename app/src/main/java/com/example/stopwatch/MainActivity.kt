@@ -22,17 +22,21 @@ class MainActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
+        Log.v(TAG,"onResume")
     }
 
     override fun onPause() {
         super.onPause()
+        Log.v(TAG,"onPause")
     }
 
     override fun onStop() {
         super.onStop()
+        Log.v(TAG,"onStop")
     }
 
     override fun onDestroy() {
         super.onDestroy()
+        Log.v(TAG,"onDestroy")
     }
 }

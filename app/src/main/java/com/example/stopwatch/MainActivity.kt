@@ -15,11 +15,32 @@ class MainActivity : AppCompatActivity() {
     private lateinit var start : Button
     private lateinit var reset : Button
     private lateinit var timer : Chronometer
+    var saysStart = true
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        //timer.stop()
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         wideWidgets()
+        start.setOnClickListener{
+            /*
+            if(!saysStart)
+            {
+                saysStart = true
+                start.setText("Start")
+                timer.stop()
+            }
+             */
+            if(saysStart)
+            {
+                saysStart = false
+                start.setText("Stop")
+                timer.start()
+            }
+
+
+
+        }
     }
 
     private fun wideWidgets() {
@@ -31,6 +52,7 @@ class MainActivity : AppCompatActivity() {
     override fun onStart() {
         super.onStart()
         Log.d(TAG, "onStart: ")
+
     }
 
     override fun onResume() {

@@ -3,6 +3,8 @@ package com.example.stopwatch
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.Button
+import android.widget.Chronometer
 
 class MainActivity : AppCompatActivity() {
     //how to make classwide static constant in kotlin
@@ -10,9 +12,20 @@ class MainActivity : AppCompatActivity() {
         //all your "static" constants go here
         val TAG = "MainActivity"
     }
+    private lateinit var start : Button
+    private lateinit var reset : Button
+    private lateinit var timer : Chronometer
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        wideWidgets()
+    }
+
+    private fun wideWidgets() {
+        start = findViewById(R.id.button_main_start)
+        reset = findViewById(R.id.button_main_reset)
+        timer = findViewById(R.id.chronometer_main_stopwatch)
     }
 
     override fun onStart() {

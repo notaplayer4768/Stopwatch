@@ -17,26 +17,26 @@ class MainActivity : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
-        Log.v(TAG, "onStart: ")
+        Log.d(TAG, "onStart: ")
     }
 
     override fun onResume() {
         super.onResume()
-        Log.v(TAG,"onResume: ")
+        Log.d(TAG,"onResume: ")
     }
 
     override fun onPause() {
         super.onPause()
-        Log.v(TAG,"onPause: ")
+        Log.d(TAG,"onPause: ")
     }
 
     override fun onStop() {
         super.onStop()
-        Log.v(TAG,"onStop: ")
+        Log.d(TAG,"onStop: ")
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        Log.v(TAG,"onDestroy: ")
+        Log.d(TAG,"onDestroy: ")
     }
 }

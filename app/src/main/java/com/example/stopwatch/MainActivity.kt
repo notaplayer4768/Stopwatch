@@ -28,7 +28,7 @@ class MainActivity : AppCompatActivity() {
         wideWidgets()
 
         start.setOnClickListener{
-            debug.setText("${SystemClock.currentThreadTimeMillis()} base $base")
+            debug.setText("${SystemClock.elapsedRealtime()} base $base")
             if(!saysStart)
             {
                 saysStart = true

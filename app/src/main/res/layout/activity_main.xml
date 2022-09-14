@@ -38,4 +38,14 @@
         app:layout_constraintStart_toEndOf="@+id/button_main_start"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <TextView
+        android:id="@+id/textView_debug"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="100dp"
+        android:layout_marginBottom="24dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toTopOf="@+id/chronometer_main_stopwatch"
+        app:layout_constraintStart_toStartOf="@+id/button_main_start" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

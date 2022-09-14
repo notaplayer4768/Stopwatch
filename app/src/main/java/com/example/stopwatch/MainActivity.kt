@@ -2,10 +2,12 @@ package com.example.stopwatch
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.SystemClock
 import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.Chronometer
+import android.widget.TextView
 
 class MainActivity : AppCompatActivity() {
     //how to make classwide static constant in kotlin
@@ -16,35 +18,32 @@ class MainActivity : AppCompatActivity() {
     private lateinit var start : Button
     private lateinit var reset : Button
     private lateinit var timer : Chronometer
+    private lateinit var debug : TextView
+    private var base = 0L
     private var saysStart = true
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        //timer.stop()
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         wideWidgets()
-        start.setOnClickListener{
 
+        start.setOnClickListener{
+            debug.setText("${SystemClock.currentThreadTimeMillis()} base $base")
             if(!saysStart)
             {
-                //System.exit(1)
                 saysStart = true
-                start.setText("")
+                start.setText("Start")
                 timer.stop()
-
-
-
+                base = SystemClock.elapsedRealtime()
             }
-
-            if(saysStart)
+            else if(saysStart)
             {
                 saysStart = false
                 start.setText("Stop")
+                timer.base = base
                 timer.start()
+
             }
-
-
-
         }
     }
 
@@ -52,6 +51,7 @@ class MainActivity : AppCompatActivity() {
         start = findViewById(R.id.button_main_start)
         reset = findViewById(R.id.button_main_reset)
         timer = findViewById(R.id.chronometer_main_stopwatch)
+        debug = findViewById(R.id.textView_debug)
     }
 
     override fun onStart() {

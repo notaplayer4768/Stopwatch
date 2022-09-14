@@ -3,6 +3,7 @@ package com.example.stopwatch
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.Button
 import android.widget.Chronometer
 
@@ -15,7 +16,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var start : Button
     private lateinit var reset : Button
     private lateinit var timer : Chronometer
-    var saysStart = true
+    private var saysStart = true
 
     override fun onCreate(savedInstanceState: Bundle?) {
         //timer.stop()
@@ -23,14 +24,18 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         wideWidgets()
         start.setOnClickListener{
-            /*
+
             if(!saysStart)
             {
+                //System.exit(1)
                 saysStart = true
-                start.setText("Start")
+                start.setText("")
                 timer.stop()
+
+
+
             }
-             */
+
             if(saysStart)
             {
                 saysStart = false

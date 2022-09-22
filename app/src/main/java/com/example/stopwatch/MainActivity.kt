@@ -37,7 +37,7 @@ class MainActivity : AppCompatActivity() {
         //restore instance state if it exists
         if(savedInstanceState!= null) {
             displayTime = savedInstanceState.getLong(STATE_TIME)
-            timer.base = SystemClock.elapsedRealtime()-displayTime
+            timer.base = SystemClock.elapsedRealtime() + displayTime
             saysStart = savedInstanceState.getBoolean(IS_RUNNING)
             if(!saysStart)
                 timer.start()

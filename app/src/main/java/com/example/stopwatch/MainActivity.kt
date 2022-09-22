@@ -28,6 +28,7 @@ class MainActivity : AppCompatActivity() {
     private var stopTime = 0L
     private var displayTime = 0L
     private var stopIndex = 0L
+    private var justReset = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,6 +42,7 @@ class MainActivity : AppCompatActivity() {
             if(!saysStart)
                 timer.start()
         }
+        timer.base  = SystemClock.elapsedRealtime()
         start.setOnClickListener{
             debug.setText("${SystemClock.elapsedRealtime()} base $base")
             if(!saysStart)
@@ -48,19 +50,34 @@ class MainActivity : AppCompatActivity() {
                 saysStart = true
                 start.setText("Start")
                 timer.stop()
-                stopIndex = SystemClock.elapsedRealtime()
+                //stopIndex = SystemClock.elapsedRealtime()
+                displayTime = SystemClock.elapsedRealtime() - timer.base
             }
             else if(saysStart)
             {
                 saysStart = false
                 start.setText("Stop")
-                stopTime += SystemClock.elapsedRealtime() - stopIndex
-                timer.base = SystemClock.elapsedRealtime() - stopTime
-                timer.start()
+                //stopTime += SystemClock.elapsedRealtime() - stopIndex
+                //time stopped = previous time stopped + time now - time
+                //when it was last stopped
+                //timer.base = SystemClock.elapsedRealtime() - stopTime
+                //count up from time now - time stopped
+                timer.base = SystemClock.elapsedRealtime() - displayTime
+                if(justReset) {
+                    timer.base = SystemClock.elapsedRealtime()
+                    displayTime = 0L
+                    justReset = false
+                }
+                else
+                    timer.start()
             }
         }
         reset.setOnClickListener{
             //placeholder
+            timer.stop()
+            justReset = true
+            start.setText("Start")
+            saysStart = true
         }
     }
 
